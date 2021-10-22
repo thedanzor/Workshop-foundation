@@ -26,6 +26,34 @@ const data = [
 ]
 
 const Homepage = () => {
-  return <ProductList data={data} />
+  // State
+  const [cartAmount, setCartAmount] = React.useState([])
+
+  // handle adding product
+  const handleProductClick = (product) => {
+    const newState = [...cartAmount, product]
+
+    setCartAmount(newState)
+  }
+
+  // Render
+  return <>
+    <ProductList
+      data={data}
+      handleProductClick={handleProductClick}
+      variant='5by5' />
+
+    <div style={{ padding: '50px 0' }}>
+      Amount of products: {cartAmount.length}
+    </div>
+
+    {
+      cartAmount && cartAmount.length > 0 && cartAmount.map(product => {
+        return <div key={`product-list-${product.id}`}> 
+          {product.title} - {product.id}
+        </div>
+      })
+    }
+  </>
 }
 export default Homepage

@@ -7,7 +7,6 @@ import { PrimaryButton } from '../elements/buttons'
 
 // Card Styling
 const CardWrapper = styled.div`
-  width: 320px;
   padding: 8px;
   border-radius: 6px;
   border: 1px solid rgba(0,0,0,0.1);

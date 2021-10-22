@@ -1,15 +1,26 @@
 import React from 'react'
+import styled from 'styled-components'
 
 // core
 import ProductCard from '../../core/compositions/productCard'
 
+// Styling
+const ProductListWrapper = styled.div`
+  > div {
+    width: 25%;
+    display: inline-block;
+    vertical-align: top;
+
+    ${props => props.variant && props.variant === '5by5'
+      ? 'width: 20%' 
+      : ''
+    }
+  }  
+`
+
 // modules
-const ProductListModule = ({ data }) => {
-  const [activeProduct, setActiveProduct] = React.useState(null)
-
-  console.log('activeProduct', activeProduct)
-
-  return <>
+const ProductListModule = ({ data, variant, handleProductClick }) => {
+  return <ProductListWrapper variant={variant}>
     {
       data.map((productItem, index) => {
         return <ProductCard
@@ -17,11 +28,11 @@ const ProductListModule = ({ data }) => {
           title={productItem.title}
           description={productItem.description}
           handleClick={() => {
-            setActiveProduct(productItem)
+            handleProductClick(productItem)
           }}
         />
       })
     }
-  </>
+  </ProductListWrapper>
 }
 export default ProductListModule
