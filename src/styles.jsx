@@ -42,10 +42,4 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0 !important;
     margin: 0 !important;
   }
-
-  @media screen and (min-width: 1900px) {
-    body, html {
-      font-size: 0.8vw;
-    }
-  }
 `
